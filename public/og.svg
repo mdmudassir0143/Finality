@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070a0f"/>
+      <stop offset="100%" stop-color="#121821"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="980" cy="120" r="220" fill="#F0B90B" fill-opacity="0.12"/>
+  <circle cx="160" cy="520" r="180" fill="#38bdf8" fill-opacity="0.08"/>
+  <rect x="72" y="72" width="84" height="84" rx="22" fill="#F0B90B"/>
+  <text x="94" y="132" font-family="Arial, Helvetica, sans-serif" font-size="58" font-weight="800" fill="#000">F</text>
+  <text x="72" y="230" font-family="Arial, Helvetica, sans-serif" font-size="64" font-weight="800" fill="#FFFFFF">Finality</text>
+  <text x="72" y="300" font-family="Arial, Helvetica, sans-serif" font-size="36" font-weight="600" fill="#F0B90B">Market Intelligence API</text>
+  <text x="72" y="360" font-family="Arial, Helvetica, sans-serif" font-size="24" fill="#94a3b8">Paid per result with HBAR or USDC via x402 on Hedera</text>
+  <text x="72" y="520" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#64748b">Blocky402 settlement · Agent-ready</text>
+</svg>

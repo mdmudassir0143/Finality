@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="Finality">
+  <rect width="512" height="512" rx="96" fill="#0B0E11"/>
+  <path d="M128 128h256v48H200v64h160v48H200v96h-72V128z" fill="#F0B90B"/>
+  <circle cx="384" cy="384" r="40" fill="#2EE6C5"/>
+</svg>
