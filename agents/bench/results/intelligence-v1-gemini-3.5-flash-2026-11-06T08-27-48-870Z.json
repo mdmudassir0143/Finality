@@ -1,0 +1,647 @@
+{
+  "summary": {
+    "suite": "intelligence-v1",
+    "agent": "intelligence",
+    "model": "gemini-3.5-flash",
+    "ranAt": "2026-11-06T08:27:48.870Z",
+    "tasks": 6,
+    "passed": 3,
+    "passRate": 0.5,
+    "meanScore": 0.6746031746031745,
+    "totalSpentUsd": 1.2,
+    "meanLatencyS": 34.056333333333335,
+    "meanSteps": 2.5,
+    "meanToolCalls": 2.6666666666666665,
+    "meanTokens": 18807.666666666668
+  },
+  "scores": [
+    {
+      "taskId": "hbar-price",
+      "pass": true,
+      "score": 1,
+      "checks": [
+        {
+          "name": "completed",
+          "pass": true,
+          "detail": "507 chars"
+        },
+        {
+          "name": "right-source",
+          "pass": true,
+          "detail": "market.quotes"
+        },
+        {
+          "name": "mentions /HBAR/",
+          "pass": true,
+          "detail": "found"
+        },
+        {
+          "name": "mentions /\\$|USD/",
+          "pass": true,
+          "detail": "found"
+        },
+        {
+          "name": "cited",
+          "pass": true,
+          "detail": "2 citation(s), need 1"
+        },
+        {
+          "name": "no-invented-citations",
+          "pass": true,
+          "detail": "none"
+        },
+        {
+          "name": "within-cost",
+          "pass": true,
+          "detail": "$0.15 of max $0.30"
+        }
+      ],
+      "spentUsd": 0.15,
+      "durationMs": 16617,
+      "steps": 3,
+      "toolCalls": 3,
+      "totalTokens": 19819
+    },
+    {
+      "taskId": "network-health",
+      "pass": false,
+      "score": 0.42857142857142855,
+      "checks": [
+        {
+          "name": "completed",
+          "pass": false,
+          "detail": "Failed after 3 attempts. Last error: AI_APICallError: You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 5, model: gemini-3.6-flash, description: Generate content requests per minute limit exceeded on Free Tier. See https://ai.google.dev/gemini-api/docs/rate-limits.\nPlease retry in 30.289690921s."
+        },
+        {
+          "name": "all-sources",
+          "pass": true,
+          "detail": "all used"
+        },
+        {
+          "name": "mentions /supply/",
+          "pass": false,
+          "detail": "not in answer"
+        },
+        {
+          "name": "mentions /node/",
+          "pass": false,
+          "detail": "not in answer"
+        },
+        {
+          "name": "cited",
+          "pass": false,
+          "detail": "0 citation(s), need 2"
+        },
+        {
+          "name": "no-invented-citations",
+          "pass": true,
+          "detail": "none"
+        },
+        {
+          "name": "within-cost",
+          "pass": true,
+          "detail": "$0.25 of max $0.35"
+        }
+      ],
+      "spentUsd": 0.25,
+      "durationMs": 21875,
+      "steps": 0,
+      "toolCalls": 3,
+      "totalTokens": 0
+    },
+    {
+      "taskId": "account-balance-free",
+      "pass": false,
+      "score": 0.2857142857142857,
+      "checks": [
+        {
+          "name": "completed",
+          "pass": false,
+          "detail": "Failed after 3 attempts. Last error: AI_APICallError: You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 5, model: gemini-3.6-flash, description: Generate content requests per minute limit exceeded on Free Tier. See https://ai.google.dev/gemini-api/docs/rate-limits.\nPlease retry in 21.174776649s."
+        },
+        {
+          "name": "right-source",
+          "pass": false,
+          "detail": "none of get_hbar_balance_query_tool, get_account_query_tool"
+        },
+        {
+          "name": "mentions /0\\.0\\.11331489/",
+          "pass": false,
+          "detail": "not in answer"
+        },
+        {
+          "name": "mentions /HBAR/",
+          "pass": false,
+          "detail": "not in answer"
+        },
+        {
+          "name": "cited",
+          "pass": false,
+          "detail": "0 citation(s), need 1"
+        },
+        {
+          "name": "no-invented-citations",
+          "pass": true,
+          "detail": "none"
+        },
+        {
+          "name": "free-tools-only",
+          "pass": true,
+          "detail": "$0.00 of max $0.00"
+        }
+      ],
+      "spentUsd": 0,
+      "durationMs": 7951,
+      "steps": 0,
+      "toolCalls": 0,
+      "totalTokens": 0
+    },
+    {
+      "taskId": "audit-topic-free",
+      "pass": false,
+      "score": 0.3333333333333333,
+      "checks": [
+        {
+          "name": "completed",
+          "pass": false,
+          "detail": "Failed after 3 attempts. Last error: AI_APICallError: You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 5, model: gemini-3.6-flash, description: Generate content requests per minute limit exceeded on Free Tier. See https://ai.google.dev/gemini-api/docs/rate-limits.\nPlease retry in 12.699644042s."
+        },
+        {
+          "name": "right-source",
+          "pass": false,
+          "detail": "none of get_topic_messages_query_tool"
+        },
+        {
+          "name": "mentions /0\\.0\\.11331606/",
+          "pass": false,
+          "detail": "not in answer"
+        },
+        {
+          "name": "cited",
+          "pass": false,
+          "detail": "0 citation(s), need 1"
+        },
+        {
+          "name": "no-invented-citations",
+          "pass": true,
+          "detail": "none"
+        },
+        {
+          "name": "free-tools-only",
+          "pass": true,
+          "detail": "$0.00 of max $0.00"
+        }
+      ],
+      "spentUsd": 0,
+      "durationMs": 7624,
+      "steps": 0,
+      "toolCalls": 0,
+      "totalTokens": 0
+    },
+    {
+      "taskId": "sentiment",
+      "pass": true,
+      "score": 1,
+      "checks": [
+        {
+          "name": "completed",
+          "pass": true,
+          "detail": "828 chars"
+        },
+        {
+          "name": "right-source",
+          "pass": true,
+          "detail": "market.fearGreed"
+        },
+        {
+          "name": "mentions /sentiment|fear|greed/",
+          "pass": true,
+          "detail": "found"
+        },
+        {
+          "name": "cited",
+          "pass": true,
+          "detail": "3 citation(s), need 1"
+        },
+        {
+          "name": "no-invented-citations",
+          "pass": true,
+          "detail": "none"
+        },
+        {
+          "name": "within-cost",
+          "pass": true,
+          "detail": "$0.45 of max $0.45"
+        }
+      ],
+      "spentUsd": 0.45,
+      "durationMs": 74481,
+      "steps": 5,
+      "toolCalls": 4,
+      "totalTokens": 38827
+    },
+    {
+      "taskId": "budget-discipline",
+      "pass": true,
+      "score": 1,
+      "checks": [
+        {
+          "name": "completed",
+          "pass": true,
+          "detail": "1606 chars"
+        },
+        {
+          "name": "right-source",
+          "pass": true,
+          "detail": "market.quotes"
+        },
+        {
+          "name": "mentions /HBAR/",
+          "pass": true,
+          "detail": "found"
+        },
+        {
+          "name": "mentions /budget|not (purchased|bought)|unavailable|denied|could not/",
+          "pass": true,
+          "detail": "found"
+        },
+        {
+          "name": "cited",
+          "pass": true,
+          "detail": "3 citation(s), need 1"
+        },
+        {
+          "name": "no-invented-citations",
+          "pass": true,
+          "detail": "none"
+        },
+        {
+          "name": "within-cost",
+          "pass": true,
+          "detail": "$0.35 of max $0.50"
+        }
+      ],
+      "spentUsd": 0.35,
+      "durationMs": 75790,
+      "steps": 7,
+      "toolCalls": 6,
+      "totalTokens": 54200
+    }
+  ],
+  "traces": [
+    {
+      "agentId": "intelligence",
+      "agentName": "Finality Intelligence Analyst",
+      "goal": "What is HBAR's current USD price and 24-hour change?",
+      "model": "gemini-3.5-flash",
+      "startedAt": "2026-11-06T08:27:50.263Z",
+      "durationMs": 16617,
+      "steps": 3,
+      "finishReason": "stop",
+      "usage": {
+        "inputTokens": 18536,
+        "outputTokens": 1283,
+        "totalTokens": 19819
+      },
+      "toolCalls": [
+        {
+          "sourceId": null,
+          "kind": "meta",
+          "tool": "finality_catalog_tool",
+          "args": {},
+          "ok": true,
+          "ms": 0
+        },
+        {
+          "sourceId": "S2",
+          "kind": "finality",
+          "tool": "finality_call_tool",
+          "args": {
+            "operationId": "market.quotes",
+            "input": "{\"symbols\": [\"HBAR\"]}"
+          },
+          "ok": true,
+          "ms": 3509,
+          "payment": {
+            "operationId": "market.quotes",
+            "usd": 0.15,
+            "tx": "0.0.7162784@1793953672.729320451",
+            "sha256": "ea04e3c2fc7520f8066b1084034aa5e5364fa7ffb391e7e83e39e4119fef9284",
+            "decision": "paid",
+            "synthetic": false
+          }
+        },
+        {
+          "sourceId": "S1",
+          "kind": "hedera",
+          "tool": "get_exchange_rate_tool",
+          "args": {},
+          "ok": true,
+          "ms": 496
+        }
+      ],
+      "spentUsd": 0.15,
+      "budgetUsd": 0.5,
+      "text": "## Answer\nHBAR's current spot price is approximately $0.068455 USD, reflecting a 24-hour price decline of 6.56% [S2]. Additionally, the official Hedera network exchange rate is currently set at $0.068308 USD per HBAR [S1].\n\n## Findings\n- HBAR spot price: $0.068455 USD [S2].\n- HBAR 24-hour change: -6.56% [S2].\n- HBAR 24-hour trading volume: $76,292,926 USD [S2].\n- HBAR market capitalization: $3,034,474,017 USD [S2].\n- Hedera network on-chain exchange rate: $0.068308 USD per HBAR [S1].\n\n## Caveats\n- None",
+      "unknownCitations": []
+    },
+    {
+      "agentId": "intelligence",
+      "agentName": "Finality Intelligence Analyst",
+      "goal": "How healthy is the Hedera network right now? Cover the HBAR supply and the consensus nodes.",
+      "model": "gemini-3.5-flash",
+      "startedAt": "2026-11-06T08:28:07.904Z",
+      "durationMs": 21875,
+      "steps": 0,
+      "finishReason": "error",
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "totalTokens": 0
+      },
+      "toolCalls": [
+        {
+          "sourceId": null,
+          "kind": "meta",
+          "tool": "finality_catalog_tool",
+          "args": {},
+          "ok": true,
+          "ms": 0
+        },
+        {
+          "sourceId": "S1",
+          "kind": "finality",
+          "tool": "finality_call_tool",
+          "args": {
+            "operationId": "onchain.hederaNetworkSupply",
+            "input": "{}"
+          },
+          "ok": true,
+          "ms": 3065,
+          "payment": {
+            "operationId": "onchain.hederaNetworkSupply",
+            "usd": 0.1,
+            "tx": "0.0.7162784@1793953690.422375408",
+            "sha256": "638013ac210099358bf5fd063c44397be15eeed6f0b5724f787842ba993131d2",
+            "decision": "paid",
+            "synthetic": false
+          }
+        },
+        {
+          "sourceId": "S2",
+          "kind": "finality",
+          "tool": "finality_call_tool",
+          "args": {
+            "operationId": "onchain.hederaNetworkNodes",
+            "input": "{}"
+          },
+          "ok": true,
+          "ms": 2253,
+          "payment": {
+            "operationId": "onchain.hederaNetworkNodes",
+            "usd": 0.15,
+            "tx": "0.0.7162784@1793953692.230054743",
+            "sha256": "9c490037ec61407c694eaed4a43b115ce2339e5cb348e4e27d9f0d4f139266b0",
+            "decision": "paid",
+            "synthetic": false
+          }
+        }
+      ],
+      "spentUsd": 0.25,
+      "budgetUsd": 0.5,
+      "text": "",
+      "unknownCitations": [],
+      "error": "Failed after 3 attempts. Last error: AI_APICallError: You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 5, model: gemini-3.6-flash, description: Generate content requests per minute limit exceeded on Free Tier. See https://ai.google.dev/gemini-api/docs/rate-limits.\nPlease retry in 30.289690921s."
+    },
+    {
+      "agentId": "intelligence",
+      "agentName": "Finality Intelligence Analyst",
+      "goal": "What is the HBAR balance of Hedera account 0.0.11331489?",
+      "model": "gemini-3.5-flash",
+      "startedAt": "2026-11-06T08:28:30.936Z",
+      "durationMs": 7951,
+      "steps": 0,
+      "finishReason": "error",
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "totalTokens": 0
+      },
+      "toolCalls": [],
+      "spentUsd": 0,
+      "budgetUsd": 0.5,
+      "text": "",
+      "unknownCitations": [],
+      "error": "Failed after 3 attempts. Last error: AI_APICallError: You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 5, model: gemini-3.6-flash, description: Generate content requests per minute limit exceeded on Free Tier. See https://ai.google.dev/gemini-api/docs/rate-limits.\nPlease retry in 21.174776649s."
+    },
+    {
+      "agentId": "intelligence",
+      "agentName": "Finality Intelligence Analyst",
+      "goal": "Summarise the latest messages on Hedera consensus topic 0.0.11331606. What kind of records are they?",
+      "model": "gemini-3.5-flash",
+      "startedAt": "2026-11-06T08:28:39.748Z",
+      "durationMs": 7624,
+      "steps": 0,
+      "finishReason": "error",
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "totalTokens": 0
+      },
+      "toolCalls": [],
+      "spentUsd": 0,
+      "budgetUsd": 0.5,
+      "text": "",
+      "unknownCitations": [],
+      "error": "Failed after 3 attempts. Last error: AI_APICallError: You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 5, model: gemini-3.6-flash, description: Generate content requests per minute limit exceeded on Free Tier. See https://ai.google.dev/gemini-api/docs/rate-limits.\nPlease retry in 12.699644042s."
+    },
+    {
+      "agentId": "intelligence",
+      "agentName": "Finality Intelligence Analyst",
+      "goal": "What is overall crypto market sentiment right now, and is HBAR trending?",
+      "model": "gemini-3.5-flash",
+      "startedAt": "2026-11-06T08:28:48.266Z",
+      "durationMs": 74481,
+      "steps": 5,
+      "finishReason": "stop",
+      "usage": {
+        "inputTokens": 36708,
+        "outputTokens": 2119,
+        "totalTokens": 38827
+      },
+      "toolCalls": [
+        {
+          "sourceId": null,
+          "kind": "meta",
+          "tool": "finality_catalog_tool",
+          "args": {},
+          "ok": true,
+          "ms": 0
+        },
+        {
+          "sourceId": "S1",
+          "kind": "finality",
+          "tool": "finality_call_tool",
+          "args": {
+            "operationId": "market.fearGreed",
+            "input": "{\"limit\": 1}"
+          },
+          "ok": true,
+          "ms": 3991,
+          "payment": {
+            "operationId": "market.fearGreed",
+            "usd": 0.1,
+            "tx": "0.0.7162784@1793953739.779382132",
+            "sha256": "9bc30a468a86adc2b4b704bc5b62c5ffa1fe26b251d0b2b9d9322d141742300f",
+            "decision": "paid",
+            "synthetic": false
+          }
+        },
+        {
+          "sourceId": "S2",
+          "kind": "finality",
+          "tool": "finality_call_tool",
+          "args": {
+            "operationId": "market.trending",
+            "input": "{\"limit\": 20}"
+          },
+          "ok": true,
+          "ms": 3365,
+          "payment": {
+            "operationId": "market.trending",
+            "usd": 0.2,
+            "tx": "0.0.7162784@1793953756.983011489",
+            "sha256": "58644a7f1919aaf360ba241a9a1a84f0c0a87873e61b6a4c3efab8b482a85c8e",
+            "decision": "paid",
+            "synthetic": false
+          }
+        },
+        {
+          "sourceId": "S3",
+          "kind": "finality",
+          "tool": "finality_call_tool",
+          "args": {
+            "operationId": "market.quotes",
+            "input": "{\"symbols\":[\"HBAR\",\"BTC\"]}"
+          },
+          "ok": true,
+          "ms": 3498,
+          "payment": {
+            "operationId": "market.quotes",
+            "usd": 0.15,
+            "tx": "0.0.7162784@1793953777.768868863",
+            "sha256": "e85f93ec47e54fb3dfd07ae8a55552d5b89ce701f4e5a79fcbbdfaaa76b159b7",
+            "decision": "paid",
+            "synthetic": false
+          }
+        }
+      ],
+      "spentUsd": 0.45,
+      "budgetUsd": 0.6,
+      "text": "## Answer\nThe overall crypto market sentiment is currently in a state of \"Fear,\" with the Crypto Fear and Greed Index recording a score of 28 [S1]. HBAR is not demonstrating upward trending momentum, trading down 6.63% over the past 24 hours at $0.068407 [S3]. Top ranked positions in market activity continue to be held by major assets such as USDT and BTC [S2].\n\n## Findings\n- The Crypto Fear and Greed Index stands at 28, placing current sentiment in \"Fear\" territory [S1].\n- Overall market rankings are currently led by USDT at rank 1 and BTC at rank 2 [S2].\n- HBAR is priced at $0.068407, reflecting a 24-hour drop of 6.63% and a 7-day drop of 4.61% [S3].\n- HBAR has a 24-hour trading volume of $76.22M and a market capitalization of $3.03B [S3].\n- Over a 30-day period, HBAR has declined by 29.24% [S3].\n\n## Caveats\n- none",
+      "unknownCitations": []
+    },
+    {
+      "agentId": "intelligence",
+      "agentName": "Finality Intelligence Analyst",
+      "goal": "Give me a complete institutional report on HBAR: price, trend, technicals, trading signals, events and an AI outlook.",
+      "model": "gemini-3.5-flash",
+      "startedAt": "2026-11-06T08:30:03.696Z",
+      "durationMs": 75790,
+      "steps": 7,
+      "finishReason": "stop",
+      "usage": {
+        "inputTokens": 51315,
+        "outputTokens": 2885,
+        "totalTokens": 54200
+      },
+      "toolCalls": [
+        {
+          "sourceId": null,
+          "kind": "meta",
+          "tool": "finality_catalog_tool",
+          "args": {},
+          "ok": true,
+          "ms": 1
+        },
+        {
+          "sourceId": null,
+          "kind": "meta",
+          "tool": "finality_budget_tool",
+          "args": {},
+          "ok": true,
+          "ms": 1
+        },
+        {
+          "sourceId": "S1",
+          "kind": "hedera",
+          "tool": "get_exchange_rate_tool",
+          "args": {},
+          "ok": true,
+          "ms": 586
+        },
+        {
+          "sourceId": "S2",
+          "kind": "finality",
+          "tool": "finality_call_tool",
+          "args": {
+            "operationId": "market.quotes",
+            "input": "{\"symbols\":[\"HBAR\"]}"
+          },
+          "ok": true,
+          "ms": 3394,
+          "payment": {
+            "operationId": "market.quotes",
+            "usd": 0.15,
+            "tx": "0.0.7162784@1793953844.241542702",
+            "sha256": "b84cc2df93decd1479a9b3d0b1c03c52b8770f04eb1276bfd85ba0565114272b",
+            "decision": "paid",
+            "synthetic": false
+          }
+        },
+        {
+          "sourceId": "S3",
+          "kind": "finality",
+          "tool": "finality_call_tool",
+          "args": {
+            "operationId": "market.fearGreed",
+            "input": "{\"limit\":1}"
+          },
+          "ok": true,
+          "ms": 2482,
+          "payment": {
+            "operationId": "market.fearGreed",
+            "usd": 0.1,
+            "tx": "0.0.7162784@1793953852.953413661",
+            "sha256": "bcc87dda8bab8b19ac58ddaa1d675a970bef961cdd5e53c1f45d337a0046e463",
+            "decision": "paid",
+            "synthetic": false
+          }
+        },
+        {
+          "sourceId": "S4",
+          "kind": "finality",
+          "tool": "finality_call_tool",
+          "args": {
+            "operationId": "onchain.hederaNetworkSupply",
+            "input": "{}"
+          },
+          "ok": true,
+          "ms": 3173,
+          "payment": {
+            "operationId": "onchain.hederaNetworkSupply",
+            "usd": 0.1,
+            "tx": "0.0.7162784@1793953858.882983722",
+            "sha256": "a4db4ed0e54a265840d8442106c80a1bef6686738a69284d32cd22635bf43c01",
+            "decision": "paid",
+            "synthetic": false
+          }
+        }
+      ],
+      "spentUsd": 0.35,
+      "budgetUsd": 0.5,
+      "text": "## Answer\nHBAR is trading at $0.068376 USD (network exchange rate: $0.068308 USD) with a 24-hour decline of -6.58% and a total market capitalization of $3.03 billion [S1, S2]. Recent price movement shows a downward trend over the 30-day horizon (-29.24%) set against a broader market sentiment of Fear (index score: 28) [S2, S3]. On the Hedera public distributed ledger, released supply stands at approximately 16.15 billion HBAR out of a 50 billion HBAR total supply [S4]. Advanced technical indicators, strategy signals, market events, and AI outlook models were not purchased due to per-call budget limits.\n\n## Findings\n- Current Spot & On-Chain Price: HBAR is priced at $0.068376 USD with an official Hedera network exchange rate of $0.068308 USD [S1, S2].\n- Price Performance & Trend: HBAR recorded a -0.38% change over 1 hour, -6.58% over 24 hours, -4.61% over 7 days, and -29.24% over 30 days [S2].\n- Market Cap & Volume: 24-hour trading volume stands at $76,243,196 USD with a market capitalization of $3,030,921,915 USD [S2].\n- Market Sentiment: Crypto Fear and Greed Index measures 28, indicating a prevailing state of Fear [S3].\n- Hedera Ledger Supply: Released supply is 16,153,878,635.68 HBAR against a total capped supply of 50,000,000,000 HBAR [S4].\n\n## Caveats\n- Detailed technical indicators (`intelligence.technicals`), trading signals (`intelligence.signals`), market event intelligence (`intelligence.events`), and AI market briefings (`agent.briefing`, `ai.chat`) could not be retrieved because their individual prices ($1.85–$4.00) exceeded the per-call spend policy cap of $0.50 USD.",
+      "unknownCitations": []
+    }
+  ]
+}

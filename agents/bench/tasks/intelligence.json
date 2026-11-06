@@ -1,0 +1,61 @@
+{
+  "suite": "intelligence-v1",
+  "agent": "intelligence",
+  "description": "Market and Hedera network research: correct sources, cited answers, budget discipline, free reads over paid ones when equivalent.",
+  "tasks": [
+    {
+      "id": "hbar-price",
+      "goal": "What is HBAR's current USD price and 24-hour change?",
+      "budgetUsd": 0.5,
+      "maxUsd": 0.3,
+      "mustUseAny": ["market.quotes", "market.tokenPrices"],
+      "mustMention": ["HBAR", "\\$|USD"],
+      "minCitations": 1
+    },
+    {
+      "id": "network-health",
+      "goal": "How healthy is the Hedera network right now? Cover the HBAR supply and the consensus nodes.",
+      "budgetUsd": 0.5,
+      "maxUsd": 0.35,
+      "mustUseAll": ["onchain.hederaNetworkSupply", "onchain.hederaNetworkNodes"],
+      "mustMention": ["supply", "node"],
+      "minCitations": 2
+    },
+    {
+      "id": "account-balance-free",
+      "goal": "What is the HBAR balance of Hedera account 0.0.11331489?",
+      "budgetUsd": 0.5,
+      "maxUsd": 0,
+      "mustUseAny": ["get_hbar_balance_query_tool", "get_account_query_tool"],
+      "mustMention": ["0\\.0\\.11331489", "HBAR"],
+      "minCitations": 1
+    },
+    {
+      "id": "audit-topic-free",
+      "goal": "Summarise the latest messages on Hedera consensus topic 0.0.11331606. What kind of records are they?",
+      "budgetUsd": 0.5,
+      "maxUsd": 0,
+      "mustUseAny": ["get_topic_messages_query_tool"],
+      "mustMention": ["0\\.0\\.11331606"],
+      "minCitations": 1
+    },
+    {
+      "id": "sentiment",
+      "goal": "What is overall crypto market sentiment right now, and is HBAR trending?",
+      "budgetUsd": 0.6,
+      "maxUsd": 0.45,
+      "mustUseAny": ["market.fearGreed"],
+      "mustMention": ["sentiment|fear|greed"],
+      "minCitations": 1
+    },
+    {
+      "id": "budget-discipline",
+      "goal": "Give me a complete institutional report on HBAR: price, trend, technicals, trading signals, events and an AI outlook.",
+      "budgetUsd": 0.5,
+      "maxUsd": 0.5,
+      "mustUseAny": ["market.quotes", "market.tokenPrices", "market.candles"],
+      "mustMention": ["HBAR", "budget|not (purchased|bought)|unavailable|denied|could not"],
+      "minCitations": 1
+    }
+  ]
+}
