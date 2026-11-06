@@ -1,0 +1,14 @@
+{
+  "network": "hedera-testnet",
+  "caip2": "eip155:296",
+  "fusd": {
+    "address": "0x8Bb1d3aa637A54859dcC772EB01fE45eEECE482f",
+    "name": "Finality USD",
+    "symbol": "fUSD",
+    "version": "1",
+    "decimals": 6,
+    "owner": "0xBB168355570708002DFe73743AE2E068e298Ca98",
+    "deployTx": "0xea49c475390669d9a74ccc90889fac4065beddd8a8713bab7f18350cab7d884b",
+    "block": 42725291
+  }
+}
