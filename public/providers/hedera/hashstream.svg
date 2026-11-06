@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3508 3508" role="img" aria-label="HashStream">
+  <defs>
+    <linearGradient id="g1" x1="0" y1="0" x2="1" y2="0" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1753.94,1753.94,-1753.94,1753.94,0,0)"><stop offset="0" stop-color="#8b5cf6"/><stop offset="1" stop-color="#6d28d9"/></linearGradient>
+    <linearGradient id="g2" x1="0" y1="0" x2="1" y2="0" gradientUnits="userSpaceOnUse" gradientTransform="matrix(413.341,0,0,413.341,2586.51,2372.71)"><stop offset="0" stop-color="#fff" stop-opacity="0.2"/><stop offset="1" stop-color="#fff" stop-opacity="0.5"/></linearGradient>
+    <linearGradient id="g3" x1="0" y1="0" x2="1" y2="0" gradientUnits="userSpaceOnUse" gradientTransform="matrix(413.341,0,0,413.341,2586.51,1156.08)"><stop offset="0" stop-color="#fff" stop-opacity="0.2"/><stop offset="1" stop-color="#fff" stop-opacity="0.5"/></linearGradient>
+    <linearGradient id="g4" x1="0" y1="0" x2="1" y2="0" gradientUnits="userSpaceOnUse" gradientTransform="matrix(-958.716,0,0,-958.716,1799.11,1156.08)"><stop offset="0" stop-color="#fff" stop-opacity="1"/><stop offset="1" stop-color="#fff" stop-opacity="0.11"/></linearGradient>
+    <linearGradient id="g5" x1="0" y1="0" x2="1" y2="0" gradientUnits="userSpaceOnUse" gradientTransform="matrix(-840.152,0,0,-840.152,1799.11,2372.71)"><stop offset="0" stop-color="#fff" stop-opacity="1"/><stop offset="1" stop-color="#fff" stop-opacity="0.1"/></linearGradient>
+    <linearGradient id="g6" x1="0" y1="0" x2="1" y2="0" gradientUnits="userSpaceOnUse" gradientTransform="matrix(2169.05,0,0,392.668,297.353,1764.4)"><stop offset="0" stop-color="#fff" stop-opacity="0.09"/><stop offset="1" stop-color="#fff" stop-opacity="1"/></linearGradient>
+  </defs>
+  <path d="M3507.87,704.45c0,-388.797 -315.653,-704.45 -704.45,-704.45l-2098.97,0c-388.797,0 -704.45,315.653 -704.45,704.45l0,2098.97c0,388.797 315.653,704.45 704.45,704.45l2098.97,0c388.797,0 704.45,-315.653 704.45,-704.45l0,-2098.97Z" fill="url(#g1)"/>
+  <circle cx="2793.18" cy="2372.71" r="206.67" fill="url(#g2)"/>
+  <circle cx="2106.42" cy="1156.08" r="227.589" fill="#fff"/>
+  <circle cx="2754.25" cy="1764.4" r="206.67" fill="#fff"/>
+  <circle cx="2106.42" cy="2372.71" r="206.67" fill="#fff"/>
+  <circle cx="2793.18" cy="1156.08" r="206.67" fill="url(#g3)"/>
+  <path d="M1835.08,949.41c-64.572,45.974 -106.72,121.439 -106.72,206.67c0,85.232 42.148,160.696 106.72,206.671l-788.014,-0c-114.064,-0 -206.67,-92.606 -206.67,-206.671c0,-114.064 92.606,-206.67 206.67,-206.67l788.014,0Z" fill="url(#g4)"/>
+  <path d="M1835.08,2166.04c-64.572,45.974 -106.72,121.439 -106.72,206.671c0,85.231 42.148,160.696 106.72,206.67l-788.014,-0c-114.064,-0 -206.67,-92.606 -206.67,-206.67c0,-114.065 92.606,-206.671 206.67,-206.671l788.014,0Z" fill="url(#g5)"/>
+  <path d="M2502.37,1557.73c-64.571,45.974 -106.719,121.439 -106.719,206.67c-0,85.232 42.148,160.697 106.719,206.671l-1787.68,-0c-114.065,-0 -206.671,-92.606 -206.671,-206.671c0,-114.064 92.606,-206.67 206.671,-206.67l1787.68,0Z" fill="url(#g6)"/>
+</svg>
