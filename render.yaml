@@ -1,0 +1,66 @@
+services:
+  - type: web
+    name: finality-x402-keeper
+    runtime: node
+    plan: starter
+    region: oregon
+    rootDir: keeper
+    buildCommand: npm ci
+    startCommand: npx tsx src/cli.ts run
+    healthCheckPath: /healthz
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: X402_BASE_URL
+        value: https://finality-x402-backend.onrender.com
+      - key: X402_NETWORK
+        value: hedera-testnet
+      - key: X402_FACILITATOR_URL
+        value: https://api.testnet.blocky402.com
+      - key: X402_USDC_TOKEN_ID
+        value: "0.0.429274"
+      - key: MIRROR_NODE_URL
+        value: https://testnet.mirrornode.hedera.com
+      - key: USDC_DECIMALS
+        value: "6"
+      - key: HBAR_DRIP_TINYBARS
+        value: "100000000"
+      - key: USDC_DROP_AMOUNT
+        value: "3"
+      - key: MIN_DELAY_MS
+        value: "60000"
+      - key: MAX_DELAY_MS
+        value: "300000"
+      - key: MAX_CALLS
+        value: "0"
+      - key: LOOP_AUTOSTART
+        value: "true"
+      - key: ENDPOINT_FILTER
+        value: onchain,pro
+      - key: HEALTH_PORT
+        value: "4090"
+      # Set these in the Render dashboard (secret):
+      - key: KEEPER_CONTROL_TOKEN
+        sync: false
+      - key: KEEPER_WALLETS_JSON
+        sync: false
+      - key: FUNDER_1_ACCOUNT_ID
+        sync: false
+      - key: FUNDER_1_PRIVATE_KEY
+        sync: false
+      - key: FUNDER_2_ACCOUNT_ID
+        sync: false
+      - key: FUNDER_2_PRIVATE_KEY
+        sync: false
+      - key: FUNDER_3_ACCOUNT_ID
+        sync: false
+      - key: FUNDER_3_PRIVATE_KEY
+        sync: false
+      - key: FUNDER_4_ACCOUNT_ID
+        sync: false
+      - key: FUNDER_4_PRIVATE_KEY
+        sync: false
+      - key: FUNDER_5_ACCOUNT_ID
+        sync: false
+      - key: FUNDER_5_PRIVATE_KEY
+        sync: false
