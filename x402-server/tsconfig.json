@@ -1,0 +1,22 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "outDir": "dist",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "incremental": false,
+    "types": ["node"]
+  },
+  "include": [
+    "./**/*.ts",
+    "../lib/contracts/**/*.ts",
+    "../lib/providers/**/*.ts"
+  ],
+  "exclude": [
+    "./tests/**",
+    "./dist/**",
+    "../node_modules",
+    "./node_modules"
+  ]
+}
