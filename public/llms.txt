@@ -1,0 +1,15 @@
+# Finality Market Intelligence
+
+> Agent- and user-accessible market, AI, and Hedera on-chain intelligence — paid per result with HBAR or USDC via x402.
+
+## Platform
+- Website: https://finality.accuracy.wtf
+- API: https://finality-x402-backend.onrender.com
+- Facilitator: https://api.testnet.blocky402.com (Blocky402)
+- Network: Hedera testnet · Assets: USDC (0.0.429274) and HBAR (0.0.0)
+- Tags: finality, x402, hedera, hbar, usdc
+
+## Docs
+- [Catalog](https://finality-x402-backend.onrender.com/v1/catalog)
+- [OpenAPI](https://finality-x402-backend.onrender.com/v1/openapi.json)
+- [Explore UI](https://finality.accuracy.wtf/explore)

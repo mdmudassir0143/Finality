@@ -1,0 +1,26 @@
+{
+  "name": "Finality Market Intelligence",
+  "description": "Agent- and user-accessible market, AI, and Hedera on-chain intelligence — paid per result with HBAR or USDC via x402.",
+  "url": "https://finality-x402-backend.onrender.com",
+  "documentation": "https://finality-x402-backend.onrender.com/llms.txt",
+  "version": "1.0.0",
+  "tags": [
+    "finality",
+    "x402",
+    "hedera",
+    "hbar",
+    "usdc"
+  ],
+  "payments": {
+    "protocol": "x402",
+    "network": "hedera-testnet",
+    "assets": [
+      "USDC",
+      "HBAR"
+    ],
+    "usdcTokenId": "0.0.429274",
+    "hbarAsset": "0.0.0",
+    "facilitator": "https://api.testnet.blocky402.com",
+    "merchantManifest": "https://finality-x402-backend.onrender.com/.well-known/agent.json"
+  }
+}

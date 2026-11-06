@@ -1,0 +1,13 @@
+{
+  "x402Version": 2,
+  "name": "Finality Market Intelligence",
+  "description": "Agent- and user-accessible market, AI, and Hedera on-chain intelligence — paid per result with HBAR or USDC via x402.",
+  "website": "https://finality.accuracy.wtf",
+  "logo": "https://finality.accuracy.wtf/logo.webp",
+  "image": "https://finality.accuracy.wtf/og.png",
+  "merchantId": "finality-hedera",
+  "api": "https://finality-x402-backend.onrender.com",
+  "resourcesIndex": "https://finality-x402-backend.onrender.com/.well-known/x402",
+  "tags": ["finality", "x402", "hedera", "hbar", "usdc"],
+  "categories": ["market-intelligence", "agents", "hedera", "x402"]
+}
