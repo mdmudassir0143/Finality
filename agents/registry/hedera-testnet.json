@@ -1,0 +1,12 @@
+{
+  "intelligence": {
+    "id": "intelligence",
+    "name": "Finality Intelligence Analyst",
+    "accountId": "0.0.11336166",
+    "stage": "verified",
+    "createdAt": "2026-11-06T07:54:40.861Z",
+    "inboundTopicId": "0.0.11336167",
+    "outboundTopicId": "0.0.11336170",
+    "profileTopicId": "0.0.11336171"
+  }
+}
