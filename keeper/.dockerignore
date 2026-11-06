@@ -1,0 +1,10 @@
+node_modules
+npm-debug.log
+.env
+.env.*
+!.env.example
+data/wallets.json
+data/funders.json
+data/*.b64
+data/render-*.txt
+.git

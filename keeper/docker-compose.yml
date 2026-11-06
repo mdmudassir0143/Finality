@@ -1,0 +1,25 @@
+services:
+  keeper:
+    build: .
+    image: finality-keeper
+    container_name: finality-keeper
+    ports:
+      - "4090:4090"
+    env_file:
+      - .env
+    environment:
+      X402_NETWORK: ${X402_NETWORK:-hedera-testnet}
+      USDC_TOKEN_ID: ${USDC_TOKEN_ID:-0.0.429274}
+      LOOP_AUTOSTART: ${LOOP_AUTOSTART:-true}
+      # Prefer host file via volume; env seed is fallback for fresh containers.
+      KEEPER_WALLETS_JSON: ${KEEPER_WALLETS_JSON:-}
+    volumes:
+      # Full data dir so wallets.json can be read/updated (avoid file-mount dir footgun)
+      - ./data:/app/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:4090/healthz').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s

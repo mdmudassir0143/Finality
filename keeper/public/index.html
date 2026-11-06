@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Finality Keeper</title>
+  <style>
+    :root {
+      --bg: #0b0e11;
+      --panel: #12161c;
+      --line: #1e2630;
+      --text: #e8eef5;
+      --muted: #8b97a8;
+      --ok: #3dd68c;
+      --warn: #f0b429;
+      --fail: #f07178;
+      --accent: #5b9fd4;
+      --btn: #1a2330;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font: 14px/1.45 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      background: radial-gradient(1200px 600px at 10% -10%, #152033 0%, var(--bg) 55%);
+      color: var(--text);
+      min-height: 100vh;
+    }
+    header {
+      display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between;
+      padding: 18px 20px; border-bottom: 1px solid var(--line);
+    }
+    h1 { margin: 0; font-size: 16px; letter-spacing: 0.04em; font-weight: 600; }
+    .sub { color: var(--muted); font-size: 12px; }
+    .row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+    button {
+      appearance: none; border: 1px solid var(--line); background: var(--btn); color: var(--text);
+      padding: 8px 12px; border-radius: 8px; cursor: pointer; font: inherit;
+    }
+    button:hover { border-color: var(--accent); }
+    button.primary { background: #17324a; border-color: #2b5f86; }
+    button.danger { background: #2a1518; border-color: #6b3038; }
+    button:disabled { opacity: 0.45; cursor: not-allowed; }
+    input[type="password"],
+    select {
+      background: var(--panel); border: 1px solid var(--line); color: var(--text);
+      padding: 8px 10px; border-radius: 8px; min-width: 160px; font: inherit;
+    }
+    select { min-width: 180px; cursor: pointer; }
+    main { display: grid; gap: 14px; padding: 14px 20px 28px; max-width: 1100px; margin: 0 auto; }
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; }
+    .card {
+      background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px;
+    }
+    .card .label { color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; }
+    .card .value { font-size: 20px; margin-top: 4px; }
+    .badge {
+      display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 999px;
+      border: 1px solid var(--line); background: #0f141b; font-size: 12px;
+    }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--muted); }
+    .dot.ok { background: var(--ok); box-shadow: 0 0 0 3px rgba(61,214,140,.15); }
+    .dot.idle { background: var(--warn); }
+    .dot.fail { background: var(--fail); }
+    .panel {
+      background: var(--panel); border: 1px solid var(--line); border-radius: 12px; overflow: hidden;
+    }
+    .panel h2 {
+      margin: 0; padding: 10px 14px; font-size: 12px; color: var(--muted);
+      border-bottom: 1px solid var(--line); text-transform: uppercase; letter-spacing: 0.06em;
+    }
+    #logs {
+      height: min(55vh, 520px); overflow: auto; padding: 8px 0; background: #0a0d11;
+    }
+    .log {
+      display: grid; grid-template-columns: 76px 54px 1fr; gap: 10px;
+      padding: 4px 14px; border-bottom: 1px solid #12171e;
+    }
+    .log .ts { color: var(--muted); }
+    .log .lvl { text-transform: uppercase; font-size: 11px; }
+    .log .lvl.ok, .log .lvl.info { color: var(--ok); }
+    .log .lvl.warn, .log .lvl.event { color: var(--warn); }
+    .log .lvl.fail { color: var(--fail); }
+    .meta { color: var(--muted); font-size: 12px; padding: 0 2px; }
+    .err { color: var(--fail); font-size: 12px; min-height: 1.2em; }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>Finality Keeper</h1>
+      <div class="sub">x402 traffic control · logs · health</div>
+    </div>
+    <div class="row">
+      <span class="badge"><span id="statusDot" class="dot"></span><span id="statusText">loading</span></span>
+      <label class="sub" for="filterSelect">Endpoints</label>
+      <select id="filterSelect" title="Which paid routes the loop hits">
+        <option value="onchain,pro">Both (onchain + pro)</option>
+        <option value="onchain">Onchain only</option>
+        <option value="pro">Pro only</option>
+        <option value="intelligence.signals">Signals only</option>
+      </select>
+      <label class="sub" for="delaySelect">Timing</label>
+      <select id="delaySelect" title="Random delay between paid calls">
+        <option value="30s-2m">30 sec – 2 min</option>
+        <option value="30s-3m">30 sec – 3 min</option>
+        <option value="1m-5m">1 min – 5 min</option>
+        <option value="30s-1.5m">30 sec – 1.5 min</option>
+      </select>
+      <input id="token" type="password" placeholder="control token (optional)" autocomplete="off" />
+      <button class="primary" id="btnStart">Start</button>
+      <button class="danger" id="btnStop">Stop</button>
+      <button id="btnRefresh">Refresh</button>
+    </div>
+  </header>
+  <main>
+    <div class="cards">
+      <div class="card"><div class="label">Calls</div><div class="value" id="calls">—</div></div>
+      <div class="card"><div class="label">OK</div><div class="value" id="ok">—</div></div>
+      <div class="card"><div class="label">Fail</div><div class="value" id="fail">—</div></div>
+      <div class="card"><div class="label">Ready wallets</div><div class="value" id="wallets">—</div></div>
+      <div class="card"><div class="label">Uptime</div><div class="value" id="uptime">—</div></div>
+      <div class="card"><div class="label">Filter</div><div class="value" id="filterLabel" style="font-size:14px">—</div></div>
+      <div class="card"><div class="label">Timing</div><div class="value" id="delayLabel" style="font-size:14px">—</div></div>
+      <div class="card"><div class="label">Routes</div><div class="value" id="routeCount">—</div></div>
+    </div>
+    <div class="meta" id="merchant">merchant: —</div>
+    <div class="err" id="error"></div>
+    <section class="panel">
+      <h2>Live logs</h2>
+      <div id="logs"></div>
+    </section>
+  </main>
+  <script>
+    const $ = (id) => document.getElementById(id)
+    const tokenKey = 'keeper.controlToken'
+    $('token').value = localStorage.getItem(tokenKey) || ''
+    $('token').addEventListener('change', () => localStorage.setItem(tokenKey, $('token').value.trim()))
+
+    function authHeaders() {
+      const t = $('token').value.trim()
+      return t ? { Authorization: 'Bearer ' + t } : {}
+    }
+
+    function fmtUptime(s) {
+      if (!Number.isFinite(s)) return '—'
+      const h = Math.floor(s / 3600)
+      const m = Math.floor((s % 3600) / 60)
+      const sec = Math.floor(s % 60)
+      return h ? h + 'h ' + m + 'm' : m ? m + 'm ' + sec + 's' : sec + 's'
+    }
+
+    function filterLabel(v) {
+      if (v === 'onchain') return 'Onchain'
+      if (v === 'pro') return 'Pro'
+      if (v === 'onchain,pro') return 'Both'
+      if (v === 'intelligence.signals') return 'Signals'
+      return v || '—'
+    }
+
+    function setStatus(running, healthStatus) {
+      const dot = $('statusDot')
+      const text = $('statusText')
+      dot.className = 'dot ' + (running ? 'ok' : healthStatus === 'degraded' || healthStatus === 'starting' ? 'fail' : 'idle')
+      text.textContent = running ? 'running' : (healthStatus || 'idle')
+      $('btnStart').disabled = !!running
+      $('btnStop').disabled = !running
+    }
+
+    function renderLogs(logs) {
+      const box = $('logs')
+      const rows = (logs || []).slice().reverse()
+      box.innerHTML = rows.map((l) => {
+        const ts = (l.ts || '').slice(11, 19)
+        return `<div class="log"><span class="ts">${ts}</span><span class="lvl ${l.level || 'info'}">${l.level || ''}</span><span>${escapeHtml(l.message || '')}</span></div>`
+      }).join('') || '<div class="log"><span class="ts"></span><span class="lvl info"></span><span class="ts">no logs yet</span></div>'
+    }
+
+    function escapeHtml(s) {
+      return String(s).replace(/[&<>"']/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))
+    }
+
+    async function refresh() {
+      try {
+        const [health, logsRes] = await Promise.all([
+          fetch('/health').then((r) => r.json()),
+          fetch('/logs?limit=120').then((r) => r.json()),
+        ])
+        const loop = health.loop || {}
+        const wallets = health.wallets || {}
+        const control = health.control || {}
+        const filter = control.endpointFilter || 'onchain,pro'
+        if ($('filterSelect').value !== filter) $('filterSelect').value = filter
+        $('filterLabel').textContent = filterLabel(filter)
+        const delay = control.delay || {}
+        const delayId = delay.id || '30s-2m'
+        if ($('delaySelect').value !== delayId) $('delaySelect').value = delayId
+        $('delayLabel').textContent = delay.label || delayId
+        $('routeCount').textContent = health.routes?.count ?? '—'
+        $('calls').textContent = loop.calls ?? '—'
+        $('ok').textContent = loop.ok ?? '—'
+        $('fail').textContent = loop.fail ?? '—'
+        $('wallets').textContent = (wallets.ready ?? '—') + '/' + (wallets.total ?? '—')
+        $('uptime').textContent = fmtUptime(health.uptimeSeconds)
+        const delayMin = delay.minDelayMs ?? loop.minDelayMs
+        const delayMax = delay.maxDelayMs ?? loop.maxDelayMs
+        $('merchant').textContent = 'merchant: ' + (health.merchant?.baseUrl || '—') +
+          ' · ' + (health.merchant?.network || 'hedera') +
+          ' · filter ' + filter +
+          ' · delay ' + (delay.label || ((delayMin ?? '?') + '–' + (delayMax ?? '?') + 'ms'))
+        setStatus(!!loop.running, health.status)
+        renderLogs(logsRes.logs || health.logs?.recent || [])
+        $('error').textContent = ''
+      } catch (e) {
+        $('error').textContent = 'health fetch failed: ' + (e.message || e)
+        setStatus(false, 'fail')
+      }
+    }
+
+    async function post(path, body) {
+      $('error').textContent = ''
+      const res = await fetch(path, {
+        method: 'POST',
+        headers: { ...authHeaders(), 'content-type': 'application/json' },
+        body: body ? JSON.stringify(body) : '{}',
+      })
+      const data = await res.json().catch(() => ({}))
+      if (!res.ok || data.ok === false) {
+        $('error').textContent = data.error || ('HTTP ' + res.status)
+      }
+      await refresh()
+      return data
+    }
+
+    $('filterSelect').onchange = async () => {
+      const filter = $('filterSelect').value
+      await post('/api/filter', { filter })
+    }
+    $('delaySelect').onchange = async () => {
+      const delay = $('delaySelect').value
+      await post('/api/delay', { delay })
+    }
+    $('btnStart').onclick = () =>
+      post('/api/start', { filter: $('filterSelect').value, delay: $('delaySelect').value })
+    $('btnStop').onclick = () => post('/api/stop')
+    $('btnRefresh').onclick = () => refresh()
+    refresh()
+    setInterval(refresh, 2500)
+  </script>
+</body>
+</html>
